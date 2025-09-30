@@ -1,5 +1,13 @@
 <div class="h-full w-48 border-r-1 flex flex-col items-start p-4 bg-gray-50 text-green-500">
   <h2 class="text-lg font-bold mb-2">Sivupalkki</h2>
-  <p>Tämä on sivupalkki komponentti.</p>
   <button class="bg-black" (click)="vahennarahaa()">vähennä rahaa</button>
+  <p>tässä alhaalla kategoria valikoima</p>
+  <ng-select
+    [items]="rahatapahtumat"
+    [(ngModel)]="valittu"
+    placeholder="Valitse kategoria"
+    class="w-full mt-2 text-black bg-green-500"asda
+  >
+  </ng-select>
+  <p *ngIf="valittu">Valittu: {{ valittu }}</p>
 </div>

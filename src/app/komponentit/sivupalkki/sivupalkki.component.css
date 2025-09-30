@@ -1,0 +1,6 @@
+::ng-deep .ng-dropdown-panel {
+  background-color: #000 !important; /* musta tausta */
+}
+::ng-deep .ng-dropdown-panel .ng-option {
+  color: #22c55e !important; /* vihreä teksti */
+}
