@@ -13,11 +13,11 @@ export class KeskialueComponent {
   raha: number | undefined;
 
   pieChartData = {
-    labels: ['Raha'],
+    labels: ['Raha',],
     datasets: [
       {
         data: [] as number[],
-        backgroundColor: ['#22c55e', '#e5e7eb']
+        backgroundColor: ['#22c55e', '#e5e7eb', '#fbbf24', '#ef4444', '#6366f1']
       }
     ]
   };
@@ -29,8 +29,17 @@ export class KeskialueComponent {
   ngOnInit() {
   this.rahaService.raha$.subscribe(value => {
     this.raha = value;
-    this.pieChartData.datasets[0].data[0] = value;
-    this.chart?.update();
+    this.paivitaKaavio();
   });
+}
+
+  paivitaKaavio() {
+    const tapahtumat = this.rahaService.getTapahtumat();
+    this.pieChartData.labels = ['Raha', ...Object.keys(tapahtumat)];
+    this.pieChartData.datasets[0].data = [
+      this.raha ?? 0,
+      ...Object.values(tapahtumat)
+    ];
+    this.chart?.update();
   }
 }

@@ -20,17 +20,17 @@ enum RahaTapahtuma {
 })
 export class SivupalkkiComponent {
   rahatapahtumat = Object.values(RahaTapahtuma);
-  valittu?: string;
+  valittuKategoria?: string;
+  summa: number | null = null;
 
-  constructor(private rahaService: RahaService){}
+  constructor(private rahaService: RahaService) {}
 
-  vahennarahaa(){
-    this.rahaService.minusRaha();
-    console.log(this.rahaService.getRaha());
-  }
-
-  valitseTapahtuma(event: Event) {
-  const value = (event.target as HTMLSelectElement).value;
-  this.valittu = value;
+  lisaaTapahtuma() {
+    if (this.valittuKategoria && this.summa && this.summa > 0) {
+      this.rahaService.lisaaTapahtuma(this.valittuKategoria, this.summa);
+      this.rahaService.minusRaha(this.summa);
+      this.summa = null;
+      this.valittuKategoria = undefined;
+    }
   }
 }

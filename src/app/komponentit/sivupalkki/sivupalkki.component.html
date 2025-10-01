@@ -1,13 +1,15 @@
 <div class="h-full w-48 border-r-1 flex flex-col items-start p-4 bg-gray-50 text-green-500">
   <h2 class="text-lg font-bold mb-2">Sivupalkki</h2>
-  <button class="bg-black" (click)="vahennarahaa()">vähennä rahaa</button>
   <p>tässä alhaalla kategoria valikoima</p>
   <ng-select
     [items]="rahatapahtumat"
-    [(ngModel)]="valittu"
+    [(ngModel)]="valittuKategoria"
     placeholder="Valitse kategoria"
-    class="w-full mt-2 text-black bg-green-500"asda
-  >
+    class="w-full mt-2 text-black bg-green-500">
   </ng-select>
-  <p *ngIf="valittu">Valittu: {{ valittu }}</p>
+  <div *ngIf="valittuKategoria" class="mt-2 w-full box-border overflow-hidden flex flex-col gap-2">
+    <input type="number" min="1" [(ngModel)]="summa" placeholder="Summa" class="text-black px-2 py-1 rounded bg-green-500" />
+    <button class="bg-green-700 text-white px-2 py-1 rounded" (click)="lisaaTapahtuma()">Lisää</button>
+  </div>
+  <p *ngIf="valittuKategoria">Valittu: {{ valittuKategoria }}</p>
 </div>
