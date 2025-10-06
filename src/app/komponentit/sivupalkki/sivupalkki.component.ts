@@ -9,7 +9,8 @@ enum RahaTapahtuma {
   HUVIT = 'Huvit',
   HYÖDYT = 'Hyödyt',
   MUUT = 'Muut',
-  PAKOLLISEET = 'Pakolliset'
+  PAKOLLISEET = 'Pakolliset',
+  SÄÄSTÖT = 'Säästöt ja sijoitukset'
 }
 
 @Component({

@@ -1,6 +1,47 @@
-::ng-deep .ng-dropdown-panel {
-  background-color: #000 !important; /* musta tausta */
+::ng-deep .ng-select .ng-placeholder {
+  color: #c4b5fd !important;      /* vaalea violetti */
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+  width: 100%;
+  display: block;
+  opacity: 1;
+  letter-spacing: 0.03em;
 }
+
+::ng-deep .ng-select .ng-value-container {
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+::ng-deep .ng-select .ng-input {
+  text-align: center !important;
+}
+
+::ng-deep .ng-dropdown-panel {
+  background: linear-gradient(to bottom, #18181b, #6d28d9, #27272a) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 8px 32px 0 rgba(168,85,247,0.15);
+  border: none !important;
+  padding: 0.25rem 0;
+}
+
 ::ng-deep .ng-dropdown-panel .ng-option {
-  color: #22c55e !important; /* vihreä teksti */
+  color: #c4b5fd !important; /* vaalea violetti teksti */
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  margin: 0.25rem 0.5rem;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+::ng-deep .ng-dropdown-panel .ng-option:hover,
+::ng-deep .ng-dropdown-panel .ng-option.ng-option-marked {
+  background: #a21caf !important; /* kirkas violetti hover */
+  color: #fff !important;
+}
+
+::ng-deep .ng-dropdown-panel .ng-option-selected {
+  background: #6d28d9 !important; /* tumma violetti valitulle */
+  color: #fff !important;
 }
