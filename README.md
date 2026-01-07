@@ -1,5 +1,7 @@
 # Otapassidemo
 
+Sovellus tallentaa käyttäjän paikallisen tilan (saldo, tapahtumat) selaimen localStorageen. Tietoja ei lähetetä palvelimelle.
+
 Demosivu: https://thekuode.github.io/otapassidemo/
 
 
