@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 
 
 enum RahaTapahtuma {
+  LISÄÄRAHAA = "Lisää rahaa",
   HUVIT = 'Huvit',
   HYÖDYT = 'Hyödyt',
   MUUT = 'Muut',
@@ -27,7 +28,9 @@ export class SivupalkkiComponent {
   constructor(private rahaService: RahaService) {}
 
   lisaaTapahtuma() {
-    if (this.valittuKategoria && this.summa && this.summa > 0) {
+    if (this.valittuKategoria === RahaTapahtuma.LISÄÄRAHAA && this.summa && this.summa > 0){
+      this.rahaService.lisaaRahaa(this.summa);
+    } else if (this.valittuKategoria && this.summa && this.summa > 0) {
       this.rahaService.lisaaTapahtuma(this.valittuKategoria, this.summa);
       this.rahaService.minusRaha(this.summa);
       this.summa = null;

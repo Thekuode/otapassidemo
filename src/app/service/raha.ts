@@ -51,6 +51,12 @@ export class RahaService {
     this.saveState();
   }
 
+  lisaaRahaa(maara: number): void {
+    this.rahaValue += maara;
+    this.raha$.next(this.rahaValue);
+    this.saveState();
+  }
+
   getTapahtumat(): { [kategoria: string]: number } {
     return this.tapahtumat;
   }
