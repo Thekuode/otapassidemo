@@ -12,7 +12,26 @@ export class RahaService {
 
   tapahtumat: { [kategoria: string]: number } = {};
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const saved = localStorage.getItem('raha_state');
+    if(saved) {
+      try{
+        const parsed = JSON.parse(saved);
+        this.rahaValue = typeof parsed.raha ==  'number' ? parsed.raha : this.rahaValue;
+        this.tapahtumat = parsed.tapahtumat || {};
+        this.raha$.next(this.rahaValue);
+      } catch(e) {
+        console.error('Virhe ladattaessa tallennettua tilaa:', e);
+      }
+    }
+  }
+
+  private saveState(){
+    localStorage.setItem('raha_state', JSON.stringify({
+      raha: this.rahaValue,
+      tapahtumat: this.tapahtumat
+    }));
+  }
 
   getRaha(): number {
     return this.rahaValue;
@@ -21,6 +40,7 @@ export class RahaService {
   minusRaha(maara: number = 10): void {
     this.rahaValue -= maara;
     this.raha$.next(this.rahaValue);
+    this.saveState();
   }
 
   lisaaTapahtuma(kategoria: string, summa: number) {
@@ -28,7 +48,7 @@ export class RahaService {
       this.tapahtumat[kategoria] = 0;
     }
     this.tapahtumat[kategoria] += summa;
-    console.log(this.tapahtumat);
+    this.saveState();
   }
 
   getTapahtumat(): { [kategoria: string]: number } {
